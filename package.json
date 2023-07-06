@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://davidbertholt.github.io/lista_productos_mercadolibre/build",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
