@@ -1,2 +1,3 @@
-export { default as Navbar } from "./Navbar/Navbar";
-export { default as SearchInput } from "./SearchInput/SearchInput";
+export * from "./Navbar";
+export * from "./Path";
+export * from "./SearchInput";

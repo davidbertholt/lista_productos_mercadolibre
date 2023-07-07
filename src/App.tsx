@@ -1,10 +1,11 @@
+import { ThemeProvider } from "@mui/material";
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Navbar } from "./components";
+import { Navbar, Path } from "./components";
 import API from "./config/constants";
 import { LayoutContainer } from "./styled-components";
-import { ThemeProvider } from "@mui/material";
 import { themeOptions } from "./themeConfig";
+import { ListaProductos } from "./pages";
 
 const api_base = API;
 const request_url = "search?q=Apple%20IPod";
@@ -28,14 +29,8 @@ function App() {
     <ThemeProvider theme={themeOptions}>
       <LayoutContainer>
         <Navbar />
-        {results.map(result => {
-          return (
-            <>
-              <hr />
-              {JSON.stringify(result, null, 2)}
-            </>
-          );
-        })}
+        <Path />
+        <ListaProductos items={results} />
       </LayoutContainer>
     </ThemeProvider>
   );
