@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import path from "path";
 
 const replacePlugin = mode => {
   return {
@@ -25,5 +26,8 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     strictPort: true,
     port: 8080
+  },
+  resolve: {
+    alias: [{ find: "0", replacement: path.resolve(__dirname, "src") }]
   }
 }));

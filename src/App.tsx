@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { API } from "./config/constants";
+import { Navbar } from "./components";
+import API from "./config/constants";
+import { LayoutContainer } from "./styled-components";
+import { ThemeProvider } from "@mui/material";
+import { themeOptions } from "./themeConfig";
 
 const api_base = API;
 const request_url = "search?q=Apple%20IPod";
@@ -15,22 +19,25 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setResults(data.results);
+        console.log(results);
       })
       .catch(console.error);
   }, []);
 
   return (
-    <pre>
-      {results.map(result => {
-        return (
-          <>
-            <hr />
-            {JSON.stringify(result, null, 2)}
-            <hr />
-          </>
-        );
-      })}
-    </pre>
+    <ThemeProvider theme={themeOptions}>
+      <LayoutContainer>
+        <Navbar />
+        {results.map(result => {
+          return (
+            <>
+              <hr />
+              {JSON.stringify(result, null, 2)}
+            </>
+          );
+        })}
+      </LayoutContainer>
+    </ThemeProvider>
   );
 }
 
