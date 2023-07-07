@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-const api_base = import.meta.env.VITE_API_URL;
+import { API } from "./config/constants";
+
+const api_base = API;
 const request_url = "search?q=Apple%20IPod";
+
 function App() {
   const [results, setResults] = useState<any[]>([]);
 
@@ -16,7 +19,19 @@ function App() {
       .catch(console.error);
   }, []);
 
-  return <pre>{JSON.stringify(results, null, 2)}</pre>;
+  return (
+    <pre>
+      {results.map(result => {
+        return (
+          <>
+            <hr />
+            {JSON.stringify(result, null, 2)}
+            <hr />
+          </>
+        );
+      })}
+    </pre>
+  );
 }
 
 export default App;
