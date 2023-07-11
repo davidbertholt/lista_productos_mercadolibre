@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  production:
+    container_name: lista_productos_production
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      target: production
+    ports: 
+      - "8080:8080"
+      - "80:80"
+    volumes:
+      - '.:/home/app/'
+      - './config/frontend.config.js:/var/www/app/config/frontend.env.js'
+    env_file:
+      - .env-prod
+volumes:
+  node_modules:
