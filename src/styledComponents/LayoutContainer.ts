@@ -5,6 +5,7 @@ const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   @media only screen and (min-width: 1421px) {
     width: 100%;
   }

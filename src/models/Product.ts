@@ -7,3 +7,19 @@ export type Product = {
   seller_address: Address;
   price: number;
 };
+
+export type ProductDetail = {
+  sold_quantity: number;
+  condition: string;
+  description: string;
+  pictures: Picture[];
+} & Product;
+
+export type Picture = {
+  id: string;
+  url: string;
+  secure_url: string;
+  size: string;
+  max_size: string;
+  quality: string;
+};

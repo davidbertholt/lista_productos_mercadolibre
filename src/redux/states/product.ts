@@ -1,20 +1,60 @@
-import { ApiTypes, Product } from "@/models";
-import { getLocalStorage, setLocalStorage } from "@/utilities";
+import { ApiTypes, ProductDetail } from "@/models";
 import { createSlice } from "@reduxjs/toolkit";
+import { AppStore } from "../store";
 
-const initialState: Product[] = [];
+export type ProductDetailStateInterface = {
+  product_detail: ProductDetail;
+  isLoading: boolean;
+};
+
+const initialState: ProductDetailStateInterface = {
+  product_detail: {
+    id: "",
+    title: "",
+    price: 0,
+    seller_address: {
+      id: "",
+      city: {
+        id: "",
+        name: ""
+      },
+      country: {
+        id: "",
+        name: ""
+      },
+      state: {
+        id: "",
+        name: ""
+      }
+    },
+    thumbnail: "",
+    condition: "",
+    sold_quantity: 0,
+    description: "",
+    pictures: []
+  },
+  isLoading: false
+};
 
 export const productSlice = createSlice({
-  name: ApiTypes.PRODUCT,
-  initialState: getLocalStorage(ApiTypes.PRODUCT)
-    ? JSON.parse(getLocalStorage(ApiTypes.PRODUCT) as string)
-    : initialState,
+  name: ApiTypes.PRODUCT_DETAIL,
+  initialState: initialState,
   reducers: {
-    getProduct: (state, action) => {
-      setLocalStorage(ApiTypes.PRODUCT, state);
-      return action.payload;
+    startLoadingProductDetail: (state, _) => {
+      state.isLoading = true;
+    },
+    setProductDetail: (state, action) => {
+      state.isLoading = false;
+      state.product_detail = {
+        ...action.payload.item,
+        description: action.payload.description.plain_text
+      };
     }
   }
 });
 
-export const { getProduct } = productSlice.actions;
+export const {
+  setProductDetail,
+  startLoadingProductDetail
+} = productSlice.actions;
+export const selectProductDetail = (state: AppStore) => state.product;

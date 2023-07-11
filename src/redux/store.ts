@@ -1,14 +1,13 @@
-import { Product } from "@/models";
 import { configureStore } from "@reduxjs/toolkit";
 
 // reducers
-import { productSlice } from "./states";
-import { ProductsListStateInterface, productsSlice } from "./states/products";
 import { useDispatch } from "react-redux";
+import { ProductDetailStateInterface, productSlice } from "./states";
+import { ProductsListStateInterface, productsSlice } from "./states/products";
 
 export interface AppStore {
   products: ProductsListStateInterface;
-  product: Product;
+  product: ProductDetailStateInterface;
 }
 
 const store = configureStore<AppStore>({

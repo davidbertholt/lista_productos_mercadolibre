@@ -6,7 +6,7 @@ const getProductsByQuery = (query: string) => {
   return async (dispatch: any, _getState: RootState) => {
     dispatch(startLoadingProducts(true));
     try {
-      const res = await http.get(`search?q=${query}`);
+      const res = await http.get(`sites/MLA/search?q=${query}`);
       dispatch(setProducts(res.data.results));
     } catch (error) {
       console.log(error);
