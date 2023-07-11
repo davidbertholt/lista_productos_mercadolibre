@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  develop:
+    container_name: lista_productos
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "8080:8080"
+    volumes:
+      - '.:/home/app/'
+    env_file:
+      - .env-dev
+volumes:
+  node_modules:

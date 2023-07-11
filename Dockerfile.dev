@@ -1,0 +1,11 @@
+FROM node:alpine as develop
+
+RUN mkdir -p /home/app
+
+WORKDIR /home/app
+
+COPY package*.json .
+
+EXPOSE 8080
+
+CMD [ "npm", "run", "dev" ]
