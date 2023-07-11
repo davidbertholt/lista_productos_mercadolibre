@@ -1,7 +1,11 @@
+import { useParams } from "react-router-dom";
+
 interface ProductDetailsInterface {}
 
 const ProductDetails: React.FC<ProductDetailsInterface> = () => {
-  return <></>;
+  const params = useParams();
+
+  return <>Hola Item {params.id}</>;
 };
 
 export default ProductDetails;

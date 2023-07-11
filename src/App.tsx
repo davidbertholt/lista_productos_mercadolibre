@@ -1,14 +1,12 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import { Navbar, Path } from "./components";
-import { ProductsList } from "./pages";
+import router from "./routes/Routes";
 import { LayoutContainer } from "./styledComponents";
 
 function App() {
   return (
     <LayoutContainer>
-      <Navbar />
-      <Path />
-      <ProductsList />
+      <RouterProvider router={router} />
     </LayoutContainer>
   );
 }

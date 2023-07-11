@@ -5,6 +5,7 @@ import {
   ListItemButton,
   ListItemText as ListItemTextMUI
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 interface ProductListItemInterface {
@@ -14,27 +15,29 @@ interface ProductListItemInterface {
 const ProductListsItem: React.FC<ProductListItemInterface> = ({ item }) => {
   const labelId = `list-label-${item.id}`;
   return (
-    <ListItemContainer>
-      <ListItem disablePadding>
-        <ListItemButton divider>
-          <ListItemAvatar>
-            <img
-              alt={`${item.title}`}
-              src={`${item.thumbnail}`}
-              width={150}
-              height={150}
-            />
-          </ListItemAvatar>
+    <Link to={`/item/${item.id}`}>
+      <ListItemContainer>
+        <ListItem disablePadding>
+          <ListItemButton divider>
+            <ListItemAvatar>
+              <img
+                alt={`${item.title}`}
+                src={`${item.thumbnail}`}
+                width={150}
+                height={150}
+              />
+            </ListItemAvatar>
 
-          <ListItemText
-            id={labelId}
-            primary={`$${item.price}`}
-            secondary={`${item.title}`}
-          />
-          <SellerAddress>{item.seller_address.city.name}</SellerAddress>
-        </ListItemButton>
-      </ListItem>
-    </ListItemContainer>
+            <ListItemText
+              id={labelId}
+              primary={`$${item.price}`}
+              secondary={`${item.title}`}
+            />
+            <SellerAddress>{item.seller_address.city.name}</SellerAddress>
+          </ListItemButton>
+        </ListItem>
+      </ListItemContainer>
+    </Link>
   );
 };
 
