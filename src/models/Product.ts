@@ -23,3 +23,8 @@ export type Picture = {
   max_size: string;
   quality: string;
 };
+
+export type Category = {
+  id: string;
+  name: string;
+};

@@ -29,5 +29,6 @@ export default ProductsList;
 
 const List = styled(ListMUI)`
   width: "100%";
+  min-width: 150vh;
   background-color: white;
 `;

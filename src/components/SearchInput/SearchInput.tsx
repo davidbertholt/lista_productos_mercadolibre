@@ -1,5 +1,6 @@
 import { AppDispatch } from "@/redux/store";
 import getProductsByQuery from "@/services/products";
+import { isInProductDetail } from "@/utilities";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { alpha, styled } from "@mui/material/styles";
@@ -14,15 +15,14 @@ const SearchInput: React.FC<SearchInputInterface> = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const regex = /\/item\//;
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const delayFn = setTimeout(() => {
       dispatch(getProductsByQuery(searchString));
 
-      if (location.pathname.match(regex)) navigate("/list");
+      if (isInProductDetail(location)) navigate("/list");
     }, 500);
 
     return () => clearTimeout(delayFn);

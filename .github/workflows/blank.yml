@@ -18,3 +18,7 @@ jobs:
           version: "0.0" # optional
           docker_compose: "docker-compose.prod.yml" # required
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        
+      - name: run image
+        run: docker compose -f docker-compose.prod.yml push
+  

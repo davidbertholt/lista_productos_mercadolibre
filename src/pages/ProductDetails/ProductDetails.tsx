@@ -24,7 +24,9 @@ const ProductDetails: React.FC<ProductDetailsInterface> = () => {
   return (
     <DetailContainer>
       {isLoading ? (
-        <h5>Loading...</h5>
+        <LoadingContainer>
+          <h5>Loading...</h5>
+        </LoadingContainer>
       ) : (
         product_detail && (
           <ContainerPrincipal>
@@ -35,7 +37,7 @@ const ProductDetails: React.FC<ProductDetailsInterface> = () => {
               <span>
                 {`${product_detail.condition} - ${product_detail.sold_quantity} vendidos`}
               </span>
-              <Typography  align={"left"} variant={"h4"}>{product_detail.title}</Typography>
+              <Typography  align={"left"} variant={"h6"}>{product_detail.title}</Typography>
               <h1>${product_detail.price}</h1>
               <Button
                 variant="contained"
@@ -74,6 +76,7 @@ const ImageContainer = styled.div`
 `;
 
 const DescriptionContainer = styled.div`
+background-color: white;
   display:flex;
   flex-direction: column;
   padding: 2rem;
@@ -91,5 +94,11 @@ const ContainerSoldData = styled.div`
 
 const ContainerPrincipal = styled.div`
   display: flex;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+`;
+
+const LoadingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left : 50%;
 `;
