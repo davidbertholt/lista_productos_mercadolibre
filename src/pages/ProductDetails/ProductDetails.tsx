@@ -74,6 +74,7 @@ const ImageContainer = styled.div`
 `;
 
 const DescriptionContainer = styled.div`
+background-color: white;
   display:flex;
   flex-direction: column;
   padding: 2rem;
