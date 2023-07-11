@@ -31,19 +31,19 @@ const ProductDetails: React.FC<ProductDetailsInterface> = () => {
         product_detail && (
           <ContainerPrincipal>
             <ImageContainer>
-              <img src={product_detail.pictures[0]?.url} />
+              <img src={product_detail.pictures[0]?.url || product_detail.thumbnail} />
             </ImageContainer>
             <ContainerSoldData>
               <span>
-                {`${product_detail.condition} - ${product_detail.sold_quantity} vendidos`}
+                {`${product_detail.condition} - ${product_detail.sold_quantity} sold`}
               </span>
               <Typography  align={"left"} variant={"h6"}>{product_detail.title}</Typography>
               <h1>${product_detail.price}</h1>
               <Button
                 variant="contained"
-                onClick={() => alert(`Comprar item: ${product_detail.id}`)}
+                onClick={() => alert(`Buy item: ${product_detail.id}`)}
               >
-                Comprar
+                Buy
               </Button>
             </ContainerSoldData>
             <DescriptionContainer>
