@@ -35,7 +35,7 @@ const ProductDetails: React.FC<ProductDetailsInterface> = () => {
               <span>
                 {`${product_detail.condition} - ${product_detail.sold_quantity} vendidos`}
               </span>
-              <Typography  align={"left"} variant={"h4"}>{product_detail.title}</Typography>
+              <Typography  align={"left"} variant={"h6"}>{product_detail.title}</Typography>
               <h1>${product_detail.price}</h1>
               <Button
                 variant="contained"
