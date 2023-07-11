@@ -1,10 +1,11 @@
-import { ApiTypes, ProductDetail } from "@/models";
+import { ApiTypes, Category, ProductDetail } from "@/models";
 import { createSlice } from "@reduxjs/toolkit";
 import { AppStore } from "../store";
 
 export type ProductDetailStateInterface = {
   product_detail: ProductDetail;
   isLoading: boolean;
+  categoryPath: Category[];
 };
 
 const initialState: ProductDetailStateInterface = {
@@ -33,7 +34,8 @@ const initialState: ProductDetailStateInterface = {
     description: "",
     pictures: []
   },
-  isLoading: false
+  isLoading: false,
+  categoryPath: []
 };
 
 export const productSlice = createSlice({
@@ -49,12 +51,16 @@ export const productSlice = createSlice({
         ...action.payload.item,
         description: action.payload.description.plain_text
       };
+    },
+    setPathToProduct: (state, action) => {
+      state.categoryPath = action.payload;
     }
   }
 });
 
 export const {
   setProductDetail,
-  startLoadingProductDetail
+  startLoadingProductDetail,
+  setPathToProduct
 } = productSlice.actions;
 export const selectProductDetail = (state: AppStore) => state.product;

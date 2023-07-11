@@ -1,5 +1,9 @@
 import { http } from "@/http-common";
-import { setProductDetail, startLoadingProductDetail } from "@/redux";
+import {
+  setPathToProduct,
+  setProductDetail,
+  startLoadingProductDetail
+} from "@/redux";
 import { RootState } from "@/redux/store";
 
 const getProductById = (id: string) => {
@@ -8,9 +12,11 @@ const getProductById = (id: string) => {
     try {
       const item = await http.get(`items/${id}`);
       const description = await http.get(`items/${id}/description`);
+      const categories = await http.get(`categories/${item.data.category_id}`);
       dispatch(
         setProductDetail({ item: item.data, description: description.data })
       );
+      dispatch(setPathToProduct(categories.data.path_from_root));
     } catch (error) {
       console.error(error);
       alert(
