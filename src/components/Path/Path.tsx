@@ -1,16 +1,21 @@
 import { Category } from "@/models";
 import { AppStore } from "@/redux/store";
+import { isInProductDetail } from "@/utilities";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router";
 import { styled } from "styled-components";
 
 interface PathInterface {}
 
 const Path: React.FC<PathInterface> = () => {
   const { categoryPath } = useSelector((state: AppStore) => state.product);
+
+  const location = useLocation()
+
   return (
     <PathContainer>
-      {categoryPath?.map((element: Category, index: number) =>  (`${element.name} ${index === categoryPath.length - 1 ? '': ' > '}`))}
+      {!isInProductDetail(location) ? <></> : categoryPath?.map((element: Category, index: number) =>  (`${element.name} ${index === categoryPath.length - 1 ? '': ' > '}`))}
     </PathContainer>
   );
 };
