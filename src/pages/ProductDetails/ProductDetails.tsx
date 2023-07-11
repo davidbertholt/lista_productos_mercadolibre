@@ -24,7 +24,9 @@ const ProductDetails: React.FC<ProductDetailsInterface> = () => {
   return (
     <DetailContainer>
       {isLoading ? (
-        <h5>Loading...</h5>
+        <LoadingContainer>
+          <h5>Loading...</h5>
+        </LoadingContainer>
       ) : (
         product_detail && (
           <ContainerPrincipal>
@@ -92,5 +94,11 @@ const ContainerSoldData = styled.div`
 
 const ContainerPrincipal = styled.div`
   display: flex;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+`;
+
+const LoadingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left : 50%;
 `;
