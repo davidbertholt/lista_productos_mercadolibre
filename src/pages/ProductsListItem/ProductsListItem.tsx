@@ -18,9 +18,19 @@ const ProductListsItem: React.FC<ProductListItemInterface> = ({ item }) => {
       <ListItem disablePadding>
         <ListItemButton divider>
           <ListItemAvatar>
-            <img alt={`${item.title}`} src={`${item.thumbnail}`} />
+            <img
+              alt={`${item.title}`}
+              src={`${item.thumbnail}`}
+              width={150}
+              height={150}
+            />
           </ListItemAvatar>
-          <ListItemText id={labelId} primary={`${item.title}`} />
+
+          <ListItemText
+            id={labelId}
+            primary={`$${item.price}`}
+            secondary={`${item.title}`}
+          />
           <SellerAddress>{item.seller_address.city.name}</SellerAddress>
         </ListItemButton>
       </ListItem>

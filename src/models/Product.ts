@@ -5,4 +5,5 @@ export type Product = {
   thumbnail: string;
   title: string;
   seller_address: Address;
+  price: number;
 };

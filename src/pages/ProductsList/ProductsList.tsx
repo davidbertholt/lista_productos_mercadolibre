@@ -8,9 +8,13 @@ import { ProductsListItem } from "..";
 interface ProductsListInterface {}
 
 const ProductsList: React.FC<ProductsListInterface> = () => {
-  const { products } = useSelector((state: AppStore) => state.products);
+  const { products, isLoading } = useSelector(
+    (state: AppStore) => state.products
+  );
 
-  return products && products.length <= 0 ? (
+  return isLoading ? (
+    <Typography> Is loading...</Typography>
+  ) : products && products.length <= 0 ? (
     <Typography> No entries.</Typography>
   ) : (
     <List>
