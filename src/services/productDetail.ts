@@ -12,7 +12,10 @@ const getProductById = (id: string) => {
         setProductDetail({ item: item.data, description: description.data })
       );
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      alert(
+        "Ocurrió un error, por favor recargue la pantalla y vuelva a intentarlo"
+      );
     }
   };
 };

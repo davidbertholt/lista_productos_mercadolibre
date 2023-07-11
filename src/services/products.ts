@@ -9,7 +9,10 @@ const getProductsByQuery = (query: string) => {
       const res = await http.get(`sites/MLA/search?q=${query}`);
       dispatch(setProducts(res.data.results));
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      alert(
+        "Ocurrió un error, por favor recargue la pantalla y vuelva a intentarlo"
+      );
     }
   };
 };
