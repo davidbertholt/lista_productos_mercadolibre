@@ -1,18 +1,17 @@
+import { Product } from "@/models";
 import {
   ListItem,
   ListItemAvatar,
   ListItemButton,
-  ListItemText
+  ListItemText as ListItemTextMUI
 } from "@mui/material";
 import { styled } from "styled-components";
 
-interface ListaProductosItemInterface {
-  item: any;
+interface ProductListItemInterface {
+  item: Product;
 }
 
-const ListaProductosItem: React.FC<ListaProductosItemInterface> = ({
-  item
-}) => {
+const ProductListsItem: React.FC<ProductListItemInterface> = ({ item }) => {
   const labelId = `list-label-${item.id}`;
   return (
     <ListItemContainer>
@@ -22,24 +21,28 @@ const ListaProductosItem: React.FC<ListaProductosItemInterface> = ({
             <img alt={`${item.title}`} src={`${item.thumbnail}`} />
           </ListItemAvatar>
           <ListItemText id={labelId} primary={`${item.title}`} />
-          <LugarDeVenta>{item.seller_address.city.name}</LugarDeVenta>
+          <SellerAddress>{item.seller_address.city.name}</SellerAddress>
         </ListItemButton>
       </ListItem>
     </ListItemContainer>
   );
 };
 
-export default ListaProductosItem;
+export default ProductListsItem;
 
 const ListItemContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
 `;
-const LugarDeVenta = styled.div`
+const SellerAddress = styled.div`
   width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+const ListItemText = styled(ListItemTextMUI)`
+  padding: 10px;
 `;

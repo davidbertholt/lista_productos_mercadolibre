@@ -1,9 +1,10 @@
 import {
   AppBar as AppBarMui,
+  Box,
   Toolbar as ToolbarMUI,
   styled
 } from "@mui/material";
-import Box from "@mui/material/Box";
+
 import { SearchInput } from "..";
 
 export interface NavBarInterface {}

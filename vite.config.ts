@@ -27,7 +27,10 @@ export default defineConfig(({ mode }) => ({
     strictPort: true,
     port: 8080
   },
+  // resolve: {
+  //   alias: [{ find: "0", replacement: path.resolve(__dirname, "src") }]
+  // }
   resolve: {
-    alias: [{ find: "0", replacement: path.resolve(__dirname, "src") }]
+    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }]
   }
 }));

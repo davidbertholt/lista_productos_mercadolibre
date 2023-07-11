@@ -1,3 +1,3 @@
-export * from "./DetallesProducto";
-export * from "./ListaProductos";
-export * from "./ListaProductosItem";
+export * from "./ProductDetails";
+export * from "./ProductsList";
+export * from "./ProductsListItem";

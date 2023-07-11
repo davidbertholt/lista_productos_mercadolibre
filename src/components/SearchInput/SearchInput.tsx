@@ -1,10 +1,26 @@
-import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
+import { AppDispatch } from "@/redux/store";
+import getProductsByQuery from "@/services/products";
 import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
+import { alpha, styled } from "@mui/material/styles";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 export interface SearchInputInterface {}
 
 const SearchInput: React.FC<SearchInputInterface> = () => {
+  const [searchString, setSearchString] = useState<string>("");
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    const delayFn = setTimeout(() => {
+      dispatch(getProductsByQuery(searchString));
+    }, 500);
+
+    return () => clearTimeout(delayFn);
+  }, [searchString]);
+
   return (
     <Search>
       <SearchIconWrapper>
@@ -13,6 +29,8 @@ const SearchInput: React.FC<SearchInputInterface> = () => {
       <StyledInputBase
         placeholder="Search…"
         inputProps={{ "aria-label": "search" }}
+        value={searchString}
+        onChange={e => setSearchString(e.target.value)}
       />
     </Search>
   );
