@@ -5,6 +5,7 @@ import InputBase from "@mui/material/InputBase";
 import { alpha, styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export interface SearchInputInterface {}
 
@@ -13,9 +14,15 @@ const SearchInput: React.FC<SearchInputInterface> = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  const regex = /\/item\//;
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const delayFn = setTimeout(() => {
       dispatch(getProductsByQuery(searchString));
+
+      if (location.pathname.match(regex)) navigate("/list");
     }, 500);
 
     return () => clearTimeout(delayFn);
