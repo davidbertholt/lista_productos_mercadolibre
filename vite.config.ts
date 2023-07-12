@@ -19,6 +19,9 @@ const replacePlugin = mode => {
 
 export default defineConfig(({ mode }) => ({
   plugins: [react(), replacePlugin(mode)],
+  test: {
+    environment: "jsdom"
+  },
   server: {
     watch: {
       usePolling: true
@@ -27,9 +30,6 @@ export default defineConfig(({ mode }) => ({
     strictPort: true,
     port: 8080
   },
-  // resolve: {
-  //   alias: [{ find: "0", replacement: path.resolve(__dirname, "src") }]
-  // }
   resolve: {
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }]
   }
