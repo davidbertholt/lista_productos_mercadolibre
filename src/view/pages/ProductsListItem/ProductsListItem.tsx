@@ -1,4 +1,4 @@
-import { Product } from "@/models";
+import { Product } from "@/domain/models";
 import {
   ListItem,
   ListItemAvatar,

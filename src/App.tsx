@@ -1,7 +1,7 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import router from "./routes/Routes";
-import { LayoutContainer } from "./styledComponents";
+import router from "@/view/routes/Routes";
+import { LayoutContainer } from "@/view";
 
 function App() {
   return (

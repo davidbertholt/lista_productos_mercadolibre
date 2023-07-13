@@ -1,5 +1,5 @@
-import API from "@/config/constants";
 import axios from "axios";
+import API from "./constants";
 
 export const http = axios.create({
   baseURL: API,

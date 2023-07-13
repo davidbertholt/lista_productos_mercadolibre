@@ -1,10 +1,10 @@
-import { http } from "@/http-common";
 import {
   setPathToProduct,
   setProductDetail,
   startLoadingProductDetail
-} from "@/redux";
-import { RootState } from "@/redux/store";
+} from "@/infrastructure/redux";
+import { RootState } from "@/infrastructure/redux/store";
+import { http } from ".";
 
 const getProductById = (id: string) => {
   return async (dispatch: any, _getState: RootState) => {

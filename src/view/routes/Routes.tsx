@@ -1,5 +1,5 @@
-import { Layout } from "@/components";
-import { ProductDetails, ProductsList } from "@/pages";
+import { Layout } from "@/view/components";
+import { ProductDetails, ProductsList } from "@/view/pages";
 import {
   Route,
   createBrowserRouter,

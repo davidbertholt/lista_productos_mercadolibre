@@ -1,6 +1,9 @@
-import { http } from "@/http-common";
-import { setProducts, startLoadingProducts } from "@/redux/states/products";
-import { RootState } from "@/redux/store";
+import {
+  setProducts,
+  startLoadingProducts
+} from "@/infrastructure/redux/states/products";
+import { RootState } from "@/infrastructure/redux/store";
+import { http } from ".";
 
 const getProductsByQuery = (query: string) => {
   return async (dispatch: any, _getState: RootState) => {
