@@ -1,6 +1,6 @@
-import { Category } from "@/models";
-import { AppStore } from "@/redux/store";
-import { isInProductDetail } from "@/utilities";
+import { Category } from "@/domain/models";
+import { AppStore } from "@/infrastructure/redux/store";
+import { isInProductDetail } from "@/view";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";

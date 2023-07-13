@@ -1,6 +1,6 @@
-import { AppDispatch } from "@/redux/store";
-import getProductsByQuery from "@/services/products";
-import { isInProductDetail } from "@/utilities";
+import { AppDispatch } from "@/infrastructure/redux/store";
+import getProductsByQuery from "@/infrastructure/services/products";
+import { isInProductDetail } from "@/view";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { alpha, styled } from "@mui/material/styles";

@@ -1,4 +1,4 @@
-import { ApiTypes, Product } from "@/models";
+import { ApiTypes, Product } from "@/domain/models";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppStore } from "../store";
 

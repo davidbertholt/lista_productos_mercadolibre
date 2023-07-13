@@ -1,4 +1,4 @@
-import { ApiTypes, Category, ProductDetail } from "@/models";
+import { ApiTypes, Category, ProductDetail } from "@/domain/models";
 import { createSlice } from "@reduxjs/toolkit";
 import { AppStore } from "../store";
 

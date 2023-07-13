@@ -1,5 +1,5 @@
-import { Product } from "@/models";
-import { AppStore } from "@/redux/store";
+import { Product } from "@/domain/models";
+import { AppStore } from "@/infrastructure/redux/store";
 import { List as ListMUI, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";

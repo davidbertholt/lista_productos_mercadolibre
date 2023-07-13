@@ -1,5 +1,5 @@
-import { AppDispatch, AppStore } from "@/redux/store";
-import getProductById from "@/services/productDetail";
+import { AppDispatch, AppStore } from "@/infrastructure/redux/store";
+import getProductById from "@/infrastructure/services/productDetail";
 import { Button, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
