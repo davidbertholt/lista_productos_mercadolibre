@@ -15,7 +15,7 @@ interface ProductListItemInterface {
 const ProductListsItem: React.FC<ProductListItemInterface> = ({ item }) => {
   const labelId = `list-label-${item.id}`;
   return (
-    <Link to={`/item/${item.id}`}>
+    <Link data-testid={labelId} to={`/item/${item.id}`}>
       <ListItemContainer>
         <ListItem disablePadding>
           <ListItemButton divider>

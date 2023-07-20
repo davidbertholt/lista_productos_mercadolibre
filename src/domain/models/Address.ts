@@ -5,17 +5,17 @@ export type Address = {
   city: City;
 };
 
-type Country = {
+export type Country = {
   id: string;
   name: string;
 };
 
-type State = {
+export type State = {
   id: string;
   name: string;
 };
 
-type City = {
+export type City = {
   id: string;
   name: string;
 };
