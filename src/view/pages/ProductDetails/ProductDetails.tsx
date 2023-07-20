@@ -20,7 +20,7 @@ const ProductDetails: React.FC<ProductDetailsInterface> = () => {
 
   useEffect(() => {
     if(
-      params.id !== undefined       && 
+      params.id !== undefined && 
       typeof params.id === 'string'
     ) {
       dispatch(startLoadingProductDetail(true))

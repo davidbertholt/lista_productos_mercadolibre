@@ -40,9 +40,9 @@ export const a_product_detail: ProductDetail = {
   description: "a_description",
   id: "an_id",
   pictures: [],
-  price: 1,
+  price: 111,
   seller_address: a_seller_address,
-  sold_quantity: 1,
+  sold_quantity: 222,
   thumbnail: "",
   title: "a_title"
 };
