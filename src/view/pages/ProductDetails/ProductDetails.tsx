@@ -1,15 +1,16 @@
+import { fetchProduct, startLoadingProductDetail } from "@/infrastructure/redux";
 import { AppDispatch, AppStore } from "@/infrastructure/redux/store";
-import getProductById from "@/infrastructure/services/productDetail";
 import { Button, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import { styled } from "styled-components";
 
 interface ProductDetailsInterface {}
 
 const ProductDetails: React.FC<ProductDetailsInterface> = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const { product_detail, isLoading } = useSelector(
     (state: AppStore) => state.product
@@ -18,7 +19,15 @@ const ProductDetails: React.FC<ProductDetailsInterface> = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getProductById(params.id));
+    if(
+      params.id !== undefined       && 
+      typeof params.id === 'string'
+    ) {
+      dispatch(startLoadingProductDetail(true))
+      dispatch(fetchProduct(params.id));
+    } else {
+      navigate("/list");
+    }
   }, []);
 
   return (
@@ -102,3 +111,4 @@ const LoadingContainer = styled.div`
   align-items: center;
   margin-left : 50%;
 `;
+

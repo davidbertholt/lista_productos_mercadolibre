@@ -1,6 +1,7 @@
 import { ApiTypes, Product } from "@/domain/models";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AppStore } from "../store";
+import { productsList } from "@/infrastructure/services";
 
 export type ProductsListStateInterface = {
   products: Product[];
@@ -12,19 +13,33 @@ const initialState: ProductsListStateInterface = {
   isLoading: false
 };
 
+export const fetchProducts = createAsyncThunk(
+  "fetchProducts/fetch",
+  async (query: string, _thunkAPI) => {
+    const res = await productsList(query);
+    const data = res.data.results;
+    return data;
+  }
+);
+
 export const productsSlice = createSlice({
   name: ApiTypes.PRODUCTS,
   initialState: initialState,
   reducers: {
-    startLoadingProducts: (state, _) => {
-      state.isLoading = true;
-    },
-    setProducts: (state, action: PayloadAction<Product[]>) => {
-      state.isLoading = false;
-      state.products = action.payload;
+    startLoadingProducts: (state, actions) => {
+      state.isLoading = actions.payload;
     }
+  },
+  extraReducers: builder => {
+    builder.addCase(
+      fetchProducts.fulfilled,
+      (state, action: PayloadAction<Product[]>) => {
+        state.products = action.payload;
+        state.isLoading = false;
+      }
+    );
   }
 });
 
-export const { setProducts, startLoadingProducts } = productsSlice.actions;
+export const { startLoadingProducts } = productsSlice.actions;
 export const selectProducts = (state: AppStore) => state.products;

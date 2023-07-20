@@ -1,5 +1,5 @@
+import { fetchProducts, startLoadingProducts } from "@/infrastructure/redux";
 import { AppDispatch } from "@/infrastructure/redux/store";
-import getProductsByQuery from "@/infrastructure/services/products";
 import { isInProductDetail } from "@/view";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
@@ -20,7 +20,8 @@ const SearchInput: React.FC<SearchInputInterface> = () => {
 
   useEffect(() => {
     const delayFn = setTimeout(() => {
-      dispatch(getProductsByQuery(searchString));
+      dispatch(startLoadingProducts(true));
+      dispatch(fetchProducts(searchString));
 
       if (isInProductDetail(location)) navigate("/list");
     }, 500);

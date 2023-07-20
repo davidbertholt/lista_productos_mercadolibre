@@ -1,4 +1,5 @@
-export { default as constants } from "./config/constants";
-export * from "./config/http-common";
+export * from "./config";
+export { default as productDescription } from "./productDescription";
 export { default as productDetail } from "./productDetail";
-export { default as products } from "./products";
+export { default as productPath } from "./productPath";
+export { default as productsList } from "./productsList";
